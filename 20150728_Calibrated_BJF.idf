@@ -16,7 +16,7 @@
 	! FullInteriorAndExteriorWithReflections
 	! 0.1
 !20150727 1704 
-!	Changed reference to load schedule files for GenOpt ..\LoadScheduleFiles\HialeahActualTemps.csv
+!	Changed reference to load schedule files for GenOpt .\LoadScheduleFiles\HialeahActualTemps.csv
 
 !-Generator IDFEditor 1.44
 !-Option SortedOrder ViewInIPunits
@@ -399,29 +399,6 @@ Schedule:Compact,
 	
 
 Schedule:Compact,
-    Hialeah HtgSetp,         !- Name
-    Any Number,              !- Schedule Type Limits Name
-    Through: 12/31,          !- Field 1
-    For: Weekdays SummerDesignDay,  !- Field 2
-    Until: 07:00,            !- Field 3
-    18.33,                   !- Field 4
-    Until: 19:00,            !- Field 5
-    19.44,                   !- Field 6
-    Until: 24:00,            !- Field 7
-    18.33,                   !- Field 8
-    For: Saturday,           !- Field 9
-    Until: 08:00,            !- Field 10
-    18.33,                   !- Field 11
-    Until: 17:00,            !- Field 12
-    19.44,                   !- Field 13
-    Until: 24:00,            !- Field 14
-    18.33,                   !- Field 15
-    For: Sunday Holidays WinterDesignDay AllOtherDays,  !- Field 16
-    Until: 24:00,            !- Field 17
-    18.33;                   !- Field 18
-
-
-Schedule:Compact,
     Hialeah HtgSetp Electrical,  !- Name
     Any Number,              !- Schedule Type Limits Name
     Through: 3/25,           !- Field 1
@@ -635,7 +612,7 @@ Schedule:Constant,
 Schedule:File,
     HialeahAHU1TempActual,         !- Name 
     Any Number,              !- Schedule Type Limits Name
-    ..\LoadScheduleFiles\HialeahActualTemps.csv,  !- File Name
+    .\LoadScheduleFiles\HialeahActualTemps.csv,  !- File Name
     2,                       !- Column Number
     0,                       !- Rows to Skip at Top
     8760,                    !- Number of Hours of Data
@@ -644,7 +621,7 @@ Schedule:File,
 Schedule:File,
     HialeahAHU2TempActual,         !- Name 
     Any Number,              !- Schedule Type Limits Name
-    ..\LoadScheduleFiles\HialeahActualTemps.csv,  !- File Name
+    .\LoadScheduleFiles\HialeahActualTemps.csv,  !- File Name
     3,                       !- Column Number
     0,                       !- Rows to Skip at Top
     8760,                    !- Number of Hours of Data
@@ -653,27 +630,103 @@ Schedule:File,
 Schedule:File,
     HialeahAHU3TempActual,         !- Name 
     Any Number,              !- Schedule Type Limits Name
-    ..\LoadScheduleFiles\HialeahActualTemps.csv,  !- File Name
+    .\LoadScheduleFiles\HialeahActualTemps.csv,  !- File Name
     4,                       !- Column Number
     0,                       !- Rows to Skip at Top
     8760,                    !- Number of Hours of Data
     Comma;                   !- Column Separator
 
 
-!%%20150721%%
-Schedule:File,
-    Hialeah ClgSetp,         !- Name 
-    Any Number,              !- Schedule Type Limits Name
-    ..\LoadScheduleFiles\20150721_ThermostatSchedules.csv,  !- File Name
-    9,                       !- Column Number
-    2,                       !- Rows to Skip at Top
-    8760,                    !- Number of Hours of Data
-    Comma;                   !- Column Separator
+Schedule:Compact                                 ,
+Hialeah HtgSetp                                  ,       !- Name
+Any Number                                       ,
+Through: 3/8                                     ,
+For: WinterDesignDay                             ,
+Until: 24:00                                     ,20,
+For: Weekdays				                     ,
+Until: 07:00                                     ,18.33,
+Until: 19:00                                     ,20,
+Until: 24:00                                     ,18.33,
+For: Saturday                                    ,
+Until: 08:00                                     ,18.33,
+Until: 17:00                                     ,20,
+Until: 24:00                                     ,18.33,
+For: Sunday AllOtherDays,
+Until: 24:00                                     ,18.33,
+Through: 11/1                                    ,
+For: WinterDesignDay                             ,
+Until: 24:00                                     ,20,
+For: Weekdays				             ,
+Until: 06:00                                     ,18.33,
+Until: 18:00                                     ,20,
+Until: 24:00                                     ,18.33,
+For: Saturday                                    ,
+Until: 07:00                                     ,18.33,
+Until: 16:00                                     ,20,
+Until: 24:00                                     ,18.33,
+For: Sunday AllOtherDays 									 ,
+Until: 24:00                                     ,18.33,
+Through: 12/31                                   ,
+For: WinterDesignDay                             ,
+Until: 24:00                                     ,20,
+For: Weekdays                                    ,
+Until: 07:00                                     ,18.33,
+Until: 19:00                                     ,20,
+Until: 24:00                                     ,18.33,
+For: Saturday                                    ,
+Until: 08:00                                     ,18.33,
+Until: 17:00                                     ,20,
+Until: 24:00                                     ,18.33,
+For: Sunday	AllOtherDays									 ,
+Until: 24:00                                     ,18.33;
+
+Schedule:Compact                                 ,
+Hialeah ClgSetp                                  ,       !- Name
+Any Number                                       ,
+Through: 3/8                                     ,
+For: SummerDesignDay                             ,
+Until: 24:00                                     ,22.22,
+For: Weekdays				                     ,
+Until: 07:00                                     ,25.56,
+Until: 19:00                                     ,22.22,
+Until: 24:00                                     ,25.56,
+For: Saturday                                    ,
+Until: 08:00                                     ,25.56,
+Until: 17:00                                     ,22.22,
+Until: 24:00                                     ,25.56,
+For: Sunday AllOtherDays,
+Until: 24:00                                     ,25.56,
+Through: 11/1                                    ,
+For: SummerDesignDay                             ,
+Until: 24:00                                     ,22.22,
+For: Weekdays				             ,
+Until: 06:00                                     ,25.56,
+Until: 18:00                                     ,22.22,
+Until: 24:00                                     ,25.56,
+For: Saturday                                    ,
+Until: 07:00                                     ,25.56,
+Until: 16:00                                     ,22.22,
+Until: 24:00                                     ,25.56,
+For: Sunday AllOtherDays									 ,
+Until: 24:00                                     ,25.56,
+Through: 12/31                                   ,
+For: SummerDesignDay                             ,
+Until: 24:00                                     ,22.22,
+For: Weekdays                                    ,
+Until: 07:00                                     ,25.56,
+Until: 19:00                                     ,22.22,
+Until: 24:00                                     ,25.56,
+For: Saturday                                    ,
+Until: 08:00                                     ,25.56,
+Until: 17:00                                     ,22.22,
+Until: 24:00                                     ,25.56,
+For: Sunday	AllOtherDays									 ,
+Until: 24:00                                     ,25.56;
 
 Schedule:File,
     ViewGlass_Schedule_NW,  !- Name
     Any Number,              !- Schedule Type Limits Name
-    ..\LoadScheduleFiles\20150722_ViewGlassSchedules.csv,  !- File Name
+    .\LoadScheduleFiles\20150722_ViewGlassSchedules.csv,  !- File Name
     6,                       !- Column Number
     2,                       !- Rows to Skip at Top
     8760,                    !- Number of Hours of Data
@@ -682,7 +735,7 @@ Schedule:File,
 Schedule:File,
     ViewGlass_Schedule_NE,  !- Name
     Any Number,              !- Schedule Type Limits Name
-    ..\LoadScheduleFiles\20150722_ViewGlassSchedules.csv,  !- File Name
+    .\LoadScheduleFiles\20150722_ViewGlassSchedules.csv,  !- File Name
     7,                       !- Column Number
     2,                       !- Rows to Skip at Top
     8760,                    !- Number of Hours of Data
@@ -691,7 +744,7 @@ Schedule:File,
 Schedule:File,
     ViewGlass_Schedule_SE,  !- Name
     Any Number,              !- Schedule Type Limits Name
-    ..\LoadScheduleFiles\20150722_ViewGlassSchedules.csv,  !- File Name
+    .\LoadScheduleFiles\20150722_ViewGlassSchedules.csv,  !- File Name
     8,                       !- Column Number
     2,                       !- Rows to Skip at Top
     8760,                    !- Number of Hours of Data
@@ -700,7 +753,7 @@ Schedule:File,
 Schedule:File,
     ViewGlass_Schedule_SW,  !- Name
     Any Number,              !- Schedule Type Limits Name
-    ..\LoadScheduleFiles\20150722_ViewGlassSchedules.csv,  !- File Name
+    .\LoadScheduleFiles\20150722_ViewGlassSchedules.csv,  !- File Name
     9,                       !- Column Number
     2,                       !- Rows to Skip at Top
     8760,                    !- Number of Hours of Data
@@ -709,7 +762,7 @@ Schedule:File,
 Schedule:File,
     AHU1 Int Lights Daintree Schedule,  !- Name
     Any Number,              !- Schedule Type Limits Name
-    ..\LoadScheduleFiles\20150721_LoadsSortedByThermalZone.csv,  !- File Name
+    .\LoadScheduleFiles\20150807_DaintreeLoads_BJF.csv,  !- File Name
     2,                       !- Column Number
     2,                       !- Rows to Skip at Top
     8760,                    !- Number of Hours of Data
@@ -718,7 +771,7 @@ Schedule:File,
 Schedule:File,
     AHU2 Int Lights Daintree Schedule,  !- Name
     Any Number,              !- Schedule Type Limits Name
-    ..\LoadScheduleFiles\20150721_LoadsSortedByThermalZone.csv,  !- File Name
+    .\LoadScheduleFiles\20150807_DaintreeLoads_BJF.csv,  !- File Name
     3,                       !- Column Number
     2,                       !- Rows to Skip at Top
     8760,                    !- Number of Hours of Data
@@ -727,7 +780,7 @@ Schedule:File,
 Schedule:File,
     AHU3 Int Lights Daintree Schedule,  !- Name
     Any Number,              !- Schedule Type Limits Name
-    ..\LoadScheduleFiles\20150721_LoadsSortedByThermalZone.csv,  !- File Name
+    .\LoadScheduleFiles\20150807_DaintreeLoads_BJF.csv,  !- File Name
     4,                       !- Column Number
     2,                       !- Rows to Skip at Top
     8760,                    !- Number of Hours of Data
@@ -736,7 +789,7 @@ Schedule:File,
 Schedule:File,
     AHU4 Int Lights Daintree Schedule,  !- Name
     Any Number,              !- Schedule Type Limits Name
-    ..\LoadScheduleFiles\20150721_LoadsSortedByThermalZone.csv,  !- File Name
+    .\LoadScheduleFiles\20150807_DaintreeLoads_BJF.csv,  !- File Name
     5,                       !- Column Number
     2,                       !- Rows to Skip at Top
     8760,                    !- Number of Hours of Data
@@ -746,7 +799,7 @@ Schedule:File,
 Schedule:File,
     AHU1 Plug Schedule,      !- Name
     Any Number,              !- Schedule Type Limits Name
-    ..\LoadScheduleFiles\20150721_LoadsSortedByThermalZone.csv,  !- File Name
+    .\LoadScheduleFiles\20150807_DaintreeLoads_BJF.csv,  !- File Name
     6,                       !- Column Number
     2,                       !- Rows to Skip at Top
     8760,                    !- Number of Hours of Data
@@ -755,7 +808,7 @@ Schedule:File,
 Schedule:File,
     AHU2 Plug Schedule,      !- Name
     Any Number,              !- Schedule Type Limits Name
-    ..\LoadScheduleFiles\20150721_LoadsSortedByThermalZone.csv,  !- File Name
+    .\LoadScheduleFiles\20150807_DaintreeLoads_BJF.csv,  !- File Name
     7,                       !- Column Number
     2,                       !- Rows to Skip at Top
     8760,                    !- Number of Hours of Data
@@ -764,7 +817,7 @@ Schedule:File,
 Schedule:File,
     AHU3 Plug Schedule,      !- Name
     Any Number,              !- Schedule Type Limits Name
-    ..\LoadScheduleFiles\20150721_LoadsSortedByThermalZone.csv,  !- File Name
+    .\LoadScheduleFiles\20150807_DaintreeLoads_BJF.csv,  !- File Name
     8,                       !- Column Number
     2,                       !- Rows to Skip at Top
     8760,                    !- Number of Hours of Data
@@ -773,7 +826,7 @@ Schedule:File,
 Schedule:File,
     AHU4 Plug Schedule,      !- Name
     Any Number,              !- Schedule Type Limits Name
-    ..\LoadScheduleFiles\20150721_LoadsSortedByThermalZone.csv,  !- File Name
+    .\LoadScheduleFiles\20150807_DaintreeLoads_BJF.csv,  !- File Name
     9,                       !- Column Number
     2,                       !- Rows to Skip at Top
     8760,                    !- Number of Hours of Data
@@ -782,8 +835,8 @@ Schedule:File,
 Schedule:File,
     Transfer_Fan_Schedule,   !- Name
     Any Number,              !- Schedule Type Limits Name
-    ..\LoadScheduleFiles\20150721_LoadsSortedByThermalZone.csv,  !- File Name
-    10,                      !- Column Number
+    .\LoadScheduleFiles\20150807_DaintreeLoads_BJF.csv,  !- File Name
+    15,                      !- Column Number
     2,                       !- Rows to Skip at Top
     8760,                    !- Number of Hours of Data
     Comma;                   !- Column Separator
@@ -791,8 +844,8 @@ Schedule:File,
 Schedule:File,
     Exterior_Lights_Schedule,!- Name
     Any Number,              !- Schedule Type Limits Name
-    ..\LoadScheduleFiles\20150721_LoadsSortedByThermalZone.csv,  !- File Name
-    11,                      !- Column Number
+    .\LoadScheduleFiles\20150807_DaintreeLoads_BJF.csv,  !- File Name
+    10,                      !- Column Number
     2,                       !- Rows to Skip at Top
     8760,                    !- Number of Hours of Data
     Comma;                   !- Column Separator
@@ -3433,7 +3486,7 @@ Lights,
     AHU1,                    !- Zone or ZoneList Name
     AHU1 Int Lights Daintree Schedule,  !- Schedule Name
     LightingLevel,           !- Design Level Calculation Method
-    1000,                     !- Lighting Level {W} %%20150722%%
+    1,                     !- Lighting Level {W} %%20150722%%
     ,                        !- Watts per Zone Floor Area {W/m2}
     ,                        !- Watts per Person {W/person}
     ,                        !- Return Air Fraction
@@ -3445,7 +3498,7 @@ Lights,
     AHU2,                    !- Zone or ZoneList Name
     AHU2 Int Lights Daintree Schedule,  !- Schedule Name
     LightingLevel,           !- Design Level Calculation Method
-    1000,                     !- Lighting Level {W} %%20150722%%
+    1,                     !- Lighting Level {W} %%20150722%%
     ,                        !- Watts per Zone Floor Area {W/m2}
     ,                        !- Watts per Person {W/person}
     ,                        !- Return Air Fraction
@@ -3457,7 +3510,7 @@ Lights,
     AHU3,                    !- Zone or ZoneList Name
     AHU3 Int Lights Daintree Schedule,  !- Schedule Name
     LightingLevel,           !- Design Level Calculation Method
-    1000,                     !- Lighting Level {W} %%20150722%%
+    1,                     !- Lighting Level {W} %%20150722%%
     ,                        !- Watts per Zone Floor Area {W/m2}
     ,                        !- Watts per Person {W/person}
     ,                        !- Return Air Fraction 
@@ -3469,7 +3522,7 @@ Lights,
     AHU4,                    !- Zone or ZoneList Name
     AHU4 Int Lights Daintree Schedule,  !- Schedule Name
     LightingLevel,           !- Design Level Calculation Method
-    1000,                     !- Lighting Level {W} %%20150722%%
+    1,                     !- Lighting Level {W} %%20150722%%
     ,                        !- Watts per Zone Floor Area {W/m2}
     ,                        !- Watts per Person {W/person}
     ,                        !- Return Air Fraction
@@ -3484,7 +3537,7 @@ ElectricEquipment,
     AHU1,                    !- Zone or ZoneList Name
     AHU1 Plug Schedule,      !- Schedule Name
     EquipmentLevel,          !- Design Level Calculation Method
-    1000,                    !- Design Level {W} %%20150721%%
+    1,                    !- Design Level {W} %%20150721%%
     ,                        !- Watts per Zone Floor Area {W/m2}
     ,                        !- Watts per Person {W/person}
     0,                       !- Fraction Latent
@@ -3497,7 +3550,7 @@ ElectricEquipment,
     AHU2,                    !- Zone or ZoneList Name
     AHU2 Plug Schedule,      !- Schedule Name
     EquipmentLevel,          !- Design Level Calculation Method
-    1000,                    !- Design Level {W} %%20150721%%
+    1,                    !- Design Level {W} %%20150721%%
     ,                        !- Watts per Zone Floor Area {W/m2}
     ,                        !- Watts per Person {W/person}
     0,                       !- Fraction Latent
@@ -3510,7 +3563,7 @@ ElectricEquipment,
     AHU3,                    !- Zone or ZoneList Name
     AHU3 Plug Schedule,      !- Schedule Name
     EquipmentLevel,          !- Design Level Calculation Method
-    1000,                    !- Design Level {W} %%20150721%%
+    1,                    !- Design Level {W} %%20150721%%
     ,                        !- Watts per Zone Floor Area {W/m2}
     ,                        !- Watts per Person {W/person}
     0,                       !- Fraction Latent
@@ -3523,7 +3576,7 @@ ElectricEquipment,
     AHU4,                    !- Zone or ZoneList Name
     AHU4 Plug Schedule,      !- Schedule Name
     EquipmentLevel,          !- Design Level Calculation Method
-    1000,                    !- Design Level {W} %%20150721%%
+    1,                    !- Design Level {W} %%20150721%%
     ,                        !- Watts per Zone Floor Area {W/m2}
     ,                        !- Watts per Person {W/person}
     0,                       !- Fraction Latent
@@ -3535,29 +3588,38 @@ ElectricEquipment,
 ElectricEquipment,
     AHU1 ATMs,               !- Name
     AHU1,                    !- Zone or ZoneList Name
-    Always_On,               !- Schedule Name
+    AHU1 ATMs Schedule,               !- Schedule Name
     EquipmentLevel,          !- Design Level Calculation Method
-    508,                     !- Design Level {W}
+    1,                     !- Design Level {W}
     ,                        !- Watts per Zone Floor Area {W/m2}
     ,                        !- Watts per Person {W/person}
     0,                       !- Fraction Latent
     0,                       !- Fraction Radiant !ThermalResponse Equipment FracRad
     0.1,                       !- Fraction Lost
     ATMs;                    !- End-Use Subcategory
+	
+Schedule:File,
+    AHU1 ATMs Schedule,  !- Name
+    Any Number,              !- Schedule Type Limits Name
+    .\LoadScheduleFiles\20150807_DaintreeLoads_BJF.csv,  !- File Name
+    11,                       !- Column Number
+    2,                       !- Rows to Skip at Top
+    8760,                    !- Number of Hours of Data
+    Comma;                   !- Column Separator	
 
 !ThermalResponse
-! ElectricEquipment,
-    ! Transfer_Fan,            !- Name
-    ! AHU1,                    !- Zone or ZoneList Name
-    ! Transfer_Fan_Schedule,   !- Schedule Name
-    ! EquipmentLevel,          !- Design Level Calculation Method
-    ! 418,                     !- Design Level {W}
-    ! ,                        !- Watts per Zone Floor Area {W/m2}
-    ! ,                        !- Watts per Person {W/person}
-    ! 0,                       !- Fraction Latent
-    ! 0,                       !- Fraction Radiant
-    ! 0,                       !- Fraction Lost
-    ! Transfer Fan;            !- End-Use Subcategory
+ElectricEquipment,
+    Transfer_Fan,            !- Name
+    AHU1,                    !- Zone or ZoneList Name
+    Transfer_Fan_Schedule,   !- Schedule Name
+    EquipmentLevel,          !- Design Level Calculation Method
+    1,                     !- Design Level {W}
+    ,                        !- Watts per Zone Floor Area {W/m2}
+    ,                        !- Watts per Person {W/person}
+    0,                       !- Fraction Latent
+    0,                       !- Fraction Radiant
+    0,                       !- Fraction Lost
+    Transfer Fan;            !- End-Use Subcategory
 
 ZoneInfiltration:DesignFlowRate, 
     90.1-2010 - Office - OpenOffice Infiltration,  !- Name
@@ -3605,7 +3667,7 @@ ZoneInfiltration:DesignFlowRate,
 Exterior:Lights,
     Exterior_Lights,         !- Name
     Exterior_Lights_Schedule,!- Schedule Name
-    3646,                    !- Design Level {W}
+    1,                    !- Design Level {W}
     ,                        !- Control Option
     Exterior Lights;         !- End-Use Subcategory
 
@@ -3615,9 +3677,67 @@ Exterior:Lights,
 Exterior:FuelEquipment,
     ATM_Outside,             !- Name
     Electricity,             !- Fuel Use Type
-    Always_On,               !- Schedule Name
-    212,                     !- Design Level {W}
+    ATM_Outside_Schedule,               !- Schedule Name
+    1,                     !- Design Level {W}
     ATMs;                    !- End-Use Subcategory
+
+Schedule:File,
+    ATM_Outside_Schedule,!- Name
+    Any Number,              !- Schedule Type Limits Name
+    .\LoadScheduleFiles\20150807_DaintreeLoads_BJF.csv,  !- File Name
+    12,                      !- Column Number
+    2,                       !- Rows to Skip at Top
+    8760,                    !- Number of Hours of Data
+    Comma;                   !- Column Separator
+
+Exterior:FuelEquipment,
+    WaterHeater,             !- Name
+    Electricity,             !- Fuel Use Type
+    WaterHeater_Schedule,               !- Schedule Name
+    1,                     !- Design Level {W}
+    WaterHeater;                    !- End-Use Subcategory
+
+Schedule:File,
+    WaterHeater_Schedule,!- Name
+    Any Number,              !- Schedule Type Limits Name
+    .\LoadScheduleFiles\20150807_DaintreeLoads_BJF.csv,  !- File Name
+    13,                      !- Column Number
+    2,                       !- Rows to Skip at Top
+    8760,                    !- Number of Hours of Data
+    Comma;                   !- Column Separator
+
+Exterior:FuelEquipment,
+    BigAssFan,             !- Name
+    Electricity,             !- Fuel Use Type
+    BigAssFan_Schedule,               !- Schedule Name
+    1,                     !- Design Level {W}
+    BigAssFan;                    !- End-Use Subcategory
+
+Schedule:File,
+    BigAssFan_Schedule,!- Name
+    Any Number,              !- Schedule Type Limits Name
+    .\LoadScheduleFiles\20150807_DaintreeLoads_BJF.csv,  !- File Name
+    14,                      !- Column Number
+    2,                       !- Rows to Skip at Top
+    8760,                    !- Number of Hours of Data
+    Comma;                   !- Column Separator	
+
+Exterior:FuelEquipment,
+    ExhaustFan,             !- Name
+    Electricity,             !- Fuel Use Type
+    ExhaustFan_Schedule,               !- Schedule Name
+    1,                     !- Design Level {W}
+    ExhaustFan;                    !- End-Use Subcategory
+
+Schedule:File,
+    ExhaustFan_Schedule,!- Name
+    Any Number,              !- Schedule Type Limits Name
+    .\LoadScheduleFiles\20150807_DaintreeLoads_BJF.csv,  !- File Name
+    16,                      !- Column Number
+    2,                       !- Rows to Skip at Top
+    8760,                    !- Number of Hours of Data
+    Comma;                   !- Column Separator		
+	
 ! 
 ! 
 !-   ===========  ALL OBJECTS IN CLASS: HVACTEMPLATE:ZONE:VRF ===========
@@ -4436,7 +4556,7 @@ Fan:OnOff,
   VRF Terminal Unit Fan AHU1,                                 !- Name
   ,                                   !- Availability Schedule Name
   0.7,                                                     !- Fan Efficiency
-  75,                                                      !- Pressure Rise {Pa}
+  150,                                                      !- Pressure Rise {Pa}
   autosize,                                                !- Maximum Flow Rate {m3/s}
   0.9,                                                     !- Motor Efficiency
   1,                                                       !- Motor in Airstream Fraction
@@ -4967,7 +5087,7 @@ Fan:ConstantVolume,
     VRF Terminal Unit Fan AHU2, !- Name
     , !- Availability Schedule Name
     , !- Fan Total Efficiency
-    283, !- Pressure Rise
+    150, !- Pressure Rise
     autosize, !- Maximum Flow Rate
     , !- Motor Efficiency
     , !- Motor In Airstream Fraction
@@ -5504,7 +5624,7 @@ Fan:ConstantVolume,
     VRF Terminal Unit Fan AHU3, !- Name
     Always_On, !- Availability Schedule Name
     , !- Fan Total Efficiency
-    260, !- Pressure Rise
+    150, !- Pressure Rise
     autosize, !- Maximum Flow Rate
     , !- Motor Efficiency
     , !- Motor In Airstream Fraction
@@ -5867,7 +5987,7 @@ Fan:OnOff,
   AHU4 VRF Supply Fan,                                     !- Name
   HVACTemplate-Always 1,                                   !- Availability Schedule Name
   0.7,                                                     !- Fan Efficiency
-  117,                                                     !- Pressure Rise {Pa}
+  150,                                                     !- Pressure Rise {Pa}
   autosize,                                                !- Maximum Flow Rate {m3/s}
   0.9,                                                     !- Motor Efficiency
   1,                                                       !- Motor in Airstream Fraction
@@ -7602,7 +7722,58 @@ Output:Diagnostics,DisplayExtraWarnings;
 
 !-----------------------ZONE AHU1 TEMP--------------------------------
 Output:Variable,*,Zone Thermostat Air Temperature,hourly; !- Zone Average [C]
-Output:Variable,HialeahAHU1TempActual,Schedule Value,hourly; !- Zone Average []
-Output:Variable,HialeahAHU2TempActual,Schedule Value,hourly; !- Zone Average []
-Output:Variable,HialeahAHU3TempActual,Schedule Value,hourly; !- Zone Average []
+! Output:Variable,HialeahAHU1TempActual,Schedule Value,hourly; !- Zone Average []
+! Output:Variable,HialeahAHU2TempActual,Schedule Value,hourly; !- Zone Average []
+! Output:Variable,HialeahAHU3TempActual,Schedule Value,hourly; !- Zone Average []
 Output:Variable,*,Zone VRF Air Terminal Total Cooling Rate,hourly; !- HVAC Average [W]
+
+
+! Output:Variable,*,Zone Thermostat Heating Setpoint Temperature,hourly; !- Zone Average [C]
+! Output:Variable,*,Zone Thermostat Cooling Setpoint Temperature,hourly; !- Zone Average [C]
+! Output:Variable,*,People Occupant Count,hourly; !- Zone Average []
+! Output:Variable,*,Exterior Lights Electric Power,hourly; !- Zone Average [W]
+! Output:Variable,*,Lights Electric Power,hourly; !- Zone Average [W]
+! Output:Variable,*,Availability Manager Scheduled Control Status,hourly; !- HVAC Average []
+! Output:Variable,*,Electric Equipment Electric Power,hourly; !- Zone Average [W]
+! Output:Variable,*,Zone Infiltration Air Change Rate,hourly; !- HVAC Average [ach]
+! Output:Variable,*,Fan Electric Power,hourly; !- HVAC Average [W]
+
+! Output:Variable,*,Zone Air Terminal Outdoor Air Volume Flow Rate,hourly; !- HVAC Average [m3/s]
+! Output:Variable,*,Zone Air Heat Balance Outdoor Air Transfer Rate,hourly; !- HVAC Average [W]
+
+
+! Output:Variable,*,Site Exterior Horizontal Sky Illuminance,hourly; !- Zone Average [lux]
+
+! !HEATING ENERGY
+! Output:Meter:Cumulative,Heating:Electricity,runperiod; !- [J]
+
+! !COOLING ENERGY
+! Output:Meter:Cumulative,Cooling:Electricity,runperiod; !- [J]
+
+! !FAN ENERGY
+! Output:Meter:Cumulative,Fans:Electricity,runperiod; !- [J]
+
+! !INTERIOR LIGHTS
+! Output:Meter:Cumulative,InteriorLights:Electricity,runperiod; !- [J]
+
+! !EXTERIOR LIGHTS
+! Output:Meter:Cumulative,ExteriorLights:Electricity,runperiod; !- [J]
+
+! !PLUGS
+! Output:Meter:Cumulative,Plugs:InteriorEquipment:Electricity,runperiod; !- [J]
+
+! !ATMS
+! Output:Meter:Cumulative,ATMs:InteriorEquipment:Electricity,runperiod; !- [J]
+! Output:Meter:Cumulative,ATMs:ExteriorEquipment:Electricity,runperiod; !- [J]
+
+! !OTHER
+! Output:Meter:Cumulative,WaterHeater:ExteriorEquipment:Electricity,runperiod; !- [J]
+! Output:Meter:Cumulative,BigAssFan:ExteriorEquipment:Electricity,runperiod; !- [J]
+! Output:Meter,ExhaustFan:ExteriorEquipment:Electricity,runperiod; !- [J]
+! Output:Meter:Cumulative,Transfer Fan:InteriorEquipment:Electricity,runperiod; !- [J]
+
+! Output:Variable,*,VRF Heat Pump Cooling Electric Energy,runperiod; !- HVAC Sum [J] #LG CONDENSER UNIT COMPRESSOR AND CONDENSER FAN ENERGY
+
+! Output:Variable,*,Fan Electric Energy,runperiod; !- HVAC Sum [J] ##VRF AHU FAN ENERGY
+
+! Output:Variable,*,Air System Electric Energy,runperiod; !- HVAC Sum [J] !Total Electric Energy of DOAS
